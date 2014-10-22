@@ -108,14 +108,16 @@ angular.module('yoAngularProjectApp')
            
        }
 
+
     $scope.acceptClick=function(itemid){
         console.log("Inside accept click");
         console.log("Itemid is:"+itemid);
         $("#" + itemid +" a").css('background','rgb(73, 224, 21)');
     }
 
-    $scope.rejectClick=function(){
+    $scope.rejectClick=function(itemid){
         console.log("Inside reject click");
+        console.log("Item id in reject click is:"+itemid);
         $("#" + item.id +" a").css('background','rgb(217, 35, 35)');
     }
 

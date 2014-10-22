@@ -196,12 +196,14 @@ angular.module('yoAngularProjectApp')
         scope: {
             drop: '&',
             open: '&',
-            acceptClick: '&' // parent
+            acceptClick: '&',
+            rejectClick: '&',
+            itemid: '=', // parent,
+            something: '='
         },
-        link: function(scope, element) {
+        link: function(scope, element,attributes) {
             // again we need the native object
             var el = element[0];
-
             el.addEventListener(
 			    'dragover',
 			    function(e) {
@@ -211,9 +213,6 @@ angular.module('yoAngularProjectApp')
 
 			        if (e.preventDefault) e.preventDefault();
 			        this.classList.add('over');
-
-			//        console.log("Inside DROP-dragover----");
-
 			        return false;
 			    },
 			    false
@@ -226,9 +225,6 @@ angular.module('yoAngularProjectApp')
 			    'dragenter',
 			    function(e) {
 			        this.classList.add('over');
-
-		//	        console.log("Inside DROP-dragenter----");
-
 			        return false;
 			    },
 			    false
@@ -237,10 +233,6 @@ angular.module('yoAngularProjectApp')
 			el.addEventListener(
 			    'dragleave',
 			    function(e) {
-
-
-	//		    	console.log("Inside DROP-drag leave event--");
-
 			        this.classList.remove('over');
 			        return false;
 			    },
@@ -259,18 +251,20 @@ angular.module('yoAngularProjectApp')
 
           console.log("Item is:")
           console.log(item);
-          var itemid=item.id;
+          // var itemid=item.id;
+          console.log('--'+scope.itemid);
                  
 					this.appendChild(item);
 
                     if($("#" + item.id).closest('.poAcceptedrejected').length==1)
                     {
                         
-  
+                        
                         scope.open();
-                        scope.acceptCLick=function(){
-                          return item.id;
-                        }
+                       // scope.acceptClick({itemid:item.id});
+
+                       //$parse(attributes.acceptClick)({ itemid: item.id });
+                       // scope.rejectCLick({itemid:item.id});
                         /* $( "#dialog-confirm" ).dialog({
                               resizable: false,
                               height:140,
@@ -306,9 +300,6 @@ angular.module('yoAngularProjectApp')
                                 }
                               }
                             });
-
-
-                       // alert("Choose accepted or rejected for client------");
                     }
                     if($("#" + item.id).closest('.inProcess').length==1)
                     {

@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <td class="inProcess" droppable drop="handleDrop()"  open="open()" id="1" data-column="1">
+                <td class="inProcess" droppable drop="handleDrop()"  open="open()"  id="1" data-column="1">
                  <ul>
                      <li ng-repeat="story in stories1" id="{{story.id}}" draggable>
 
@@ -71,7 +71,7 @@
                         </li>
                     </ul>
                 </td>
-                <td class="poAcceptedrejected" droppable drop="handleDrop()" open="open()" data-column="3">
+                <td class="poAcceptedrejected" droppable something="name" drop="handleDrop()" open="open()" acceptClick="acceptClick(itemid)" rejectClick="rejectClick(itemid)" data-column="3">
                 <ul>
                      <li ng-repeat="story in stories3" id="{{story.id}}" draggable>
 
@@ -86,7 +86,7 @@
                         </li>
                 </ul>
                 </td>
-                <td class="clientAcceptedrejected" droppable drop="handleDrop()"  open="open()" data-column="4">
+                <td class="clientAcceptedrejected" droppable drop="handleDrop()"  open="open()" acceptClick="acceptClick(itemid)" rejectClick="rejectClick(itemid)" data-column="4">
                 <ul>
                      <li ng-repeat="story in stories4" id="{{story.id}}" draggable>
 
